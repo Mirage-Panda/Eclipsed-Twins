@@ -1,0 +1,48 @@
+{
+    "name": "§a[+] §rLight",
+    "description": "Your body is agile and light, allowing you to move in ways thought impossible by humans.",
+    "badges": [
+        {
+            "type": "origins:tooltip",
+            "text": "This includes:\n-Sprint jump 2 blocks high when energy is 75% or above\n-Not cause any vibrations",
+            "sprite": "origins:textures/gui/badge/info.png"
+        }
+    ],
+    "type": "origins:multiple",
+    "jump": {
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:sprinting"
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:charge_energy",
+                    "comparison": ">=",
+                    "compare_to": 75
+                }
+            ]
+        },
+        "type": "origins:modify_jump",
+        "modifier": {
+            "operation": "multiply_base",
+            "value": 0.5
+        },
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "particle cloud ~ ~ ~ 0.3 0.3 0.3 0.01 16 force"
+        }
+    },
+    "vibrations": {
+        "type": "origins:prevent_game_event",
+        "tag": "minecraft:vibrations"
+    },
+    "swimspeed": {
+        "type": "origins:modify_swim_speed",
+        "modifier": {
+            "operation": "multiply_base",
+            "value": 1.25
+        }
+    }
+}

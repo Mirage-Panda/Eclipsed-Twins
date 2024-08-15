@@ -1,0 +1,53 @@
+{
+    "name": "§c[-] §rExotic",
+    "description": "Your otherworldly presence makes iron golems to attack you, while creepers are terrified of you.",
+    "badges": [
+        {
+            "type": "origins:sprite"
+        }
+    ],
+    "type": "origins:multiple",
+    "madgolem": {
+        "condition": {
+            "inverted": true,
+            "type": "origins:power_active",
+            "power": "*:mist_toggle"
+        },
+        "type": "origins:action_over_time",
+        "interval": 10,
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "data modify entity @e[type=iron_golem,distance=..30,limit=1] AngryAt set from entity @s UUID"
+        }
+    },
+    "creeper": {
+        "type": "origins:scare_creepers"
+    },
+    "food": {
+        "type": "origins:prevent_item_use",
+        "item_condition": {
+            "type": "origins:food"
+        }
+    },
+    "endstone": {
+        "type": "origins:action_over_time",
+        "interval": 20,
+        "entity_action": {
+            "type": "origins:modify_inventory",
+            "inventory_type": "inventory",
+            "item_action": {
+                "type": "origins:merge_nbt",
+                "nbt": "{display:{Name:'[{\"text\":\"Cheese…?\",\"italic\":false}]'}}"
+            },
+            "item_condition": {
+                "type": "origins:ingredient",
+                "ingredient": {
+                    "item": "minecraft:end_stone"
+                }
+            },
+            "slots": [],
+            "process_mode": "items",
+            "limit": 0
+        }
+    }
+}

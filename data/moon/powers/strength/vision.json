@@ -1,0 +1,12 @@
+{
+    "hidden": true,
+    "type": "origins:multiple",
+    "nightvision": {
+        "type": "origins:night_vision",
+        "strength": 1
+    },
+    "submersion": {
+        "type": "origins:modify_camera_submersion",
+        "to": "none"
+    }
+}

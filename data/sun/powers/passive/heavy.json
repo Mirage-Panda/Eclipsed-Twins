@@ -1,0 +1,103 @@
+{
+  "name": "§c[-] §rHeavy",
+  "description": "You are denser than a normal human being, meaning you clumsy and unable to swim in water.",
+  "type": "origins:multiple",
+  "jump_small": {
+    "type": "origins:modify_jump",
+    "modifier": {
+      "operation": "multiply_total",
+      "value": -0.1
+    },
+    "condition": {
+      "type": "origins:resource",
+      "resource": "sun:active/size_resource",
+      "comparison": "==",
+      "compare_to": 0
+    }
+  },
+  "speed_small": {
+    "type": "origins:modify_velocity",
+    "modifier": {
+      "value": -0.1,
+      "operation": "multiply_total"
+    },
+    "axes": [
+      "x",
+      "z"
+    ],
+    "condition": {
+      "type": "origins:resource",
+      "resource": "sun:active/size_resource",
+      "comparison": "==",
+      "compare_to": 0
+    }
+  },
+  "jump_big": {
+    "type": "origins:modify_jump",
+    "modifier": {
+      "operation": "multiply_total",
+      "value": 0.5
+    },
+    "condition": {
+      "type": "origins:resource",
+      "resource": "sun:active/size_resource",
+      "comparison": "==",
+      "compare_to": 1
+    }
+  },
+  "speed_big1": {
+    "type": "origins:modify_velocity",
+    "modifier": {
+      "value": -0.5,
+      "operation": "multiply_total"
+    },
+    "axes": [
+      "x",
+      "z"
+    ],
+    "condition": {
+      "type": "origins:and",
+      "conditions": [
+        {
+          "type": "origins:resource",
+          "resource": "sun:active/size_resource",
+          "comparison": "==",
+          "compare_to": 1
+        },
+        {
+          "type": "origins:sprinting",
+          "inverted": true
+        }
+      ]
+    }
+  },
+  "speed_big2": {
+    "type": "origins:modify_velocity",
+    "modifier": {
+      "value": -0.2,
+      "operation": "multiply_total"
+    },
+    "axes": [
+      "x",
+      "z"
+    ],
+    "condition": {
+      "type": "origins:and",
+      "conditions": [
+        {
+          "type": "origins:resource",
+          "resource": "sun:active/size_resource",
+          "comparison": "==",
+          "compare_to": 1
+        },
+        {
+          "type": "origins:sprinting",
+          "inverted": false
+        }
+      ]
+    }
+  },
+  "swim": {
+    "type": "origins:ignore_water"
+  }
+}

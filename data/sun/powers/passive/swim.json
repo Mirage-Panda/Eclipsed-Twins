@@ -1,0 +1,30 @@
+{
+    "name": "§a[+] §rLava Affinity",
+    "description": "Coming from the infernal seas of the sun has granted you the ability to swim in lava and immunities to fire.",
+    "type": "origins:multiple",
+    "lava_swimming": {
+        "type": "origins:swimming",
+        "condition": {
+            "inverted": false,
+            "type": "origins:fluid_height",
+            "fluid": "minecraft:lava",
+            "comparison": ">",
+            "compare_to": 0
+        }
+    },
+    "lava_vision": {
+        "type": "origins:lava_vision",
+        "s": 100,
+        "v": 100
+    },
+    "fire_immune": {
+        "type": "origins:fire_immunity"
+    },
+    "lightning": {
+        "type": "origins:invulnerability",
+        "damage_condition": {
+            "type": "origins:type",
+            "damage_type": "minecraft:lightning_bolt"
+        }
+    }
+}

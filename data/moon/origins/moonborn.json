@@ -1,0 +1,23 @@
+{
+    "name": "Moonborn",
+    "description": "Born from the silent seas of the moon, you arrive on Earth, exploring a world vastly different from your tranquil lunar home.",
+    "powers": [
+        "moon:active/relocation",
+        "moon:active/mist",
+        "moon:active/beam",
+        "moon:active/consume",
+        "moon:charge",
+        "moon:strength/gravity",
+        "moon:strength/light",
+        "moon:strength/damage",
+        "moon:strength/cold",
+        "moon:strength/vision",
+        "moon:weakness/unstable",
+        "moon:weakness/exotic",
+        "moon:weakness/frail"
+    ],
+    "icon": {
+        "item": "minecraft:end_stone"
+    },
+    "impact": 3
+}

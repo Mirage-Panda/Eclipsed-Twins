@@ -1,0 +1,98 @@
+{
+    "name": "§3[%] §rHeat",
+    "description": "Your heat increases gradually during the day and when in lava. You can cool down again by using your abilities to excrete the excess heat.",
+    "type": "origins:tooltip",
+    "text": "When your heat level is over 50%:\n-You vaporise any projectiles that come too close\nWhen your heat level is over 75%:\n-Your metabolism increases\n-Your speed decreases",
+    "sprite": "origins:textures/gui/badge/info.png",
+    "type": "origins:multiple",
+    "resource": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 100,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
+            "bar_index": 15
+        },
+        "start_value": 0
+    },
+    "sunlight": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_resource",
+            "operation": "add",
+            "change": 1
+        },
+        "interval": 50,
+        "condition": {
+            "type": "origins:exposed_to_sun"
+        }
+    },
+    "lava": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_resource",
+            "operation": "add",
+            "change": 1
+        },
+        "interval": 1,
+        "condition": {
+            "type": "origins:or",
+            "conditions": [
+                {
+                    "type": "origins:in_block_anywhere",
+                    "block_condition": {
+                        "type": "origins:or",
+                        "conditions": [
+                            {
+                                "type": "origins:block",
+                                "block": "minecraft:lava"
+                            },
+                            {
+                                "type": "origins:block",
+                                "block": "minecraft:fire"
+                            },
+                            {
+                                "type": "origins:block",
+                                "block": "minecraft:soul_fire"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "origins:dimension",
+                    "dimension": "minecraft:the_nether"
+                }
+            ]
+        }
+    },
+    "vaporise": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "execute as @s at @e[type=#sun:projectiles,distance=..3] run function sun:untouchable"
+        },
+        "interval": 1,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_resource",
+            "comparison": ">",
+            "compare_to": 50
+        }
+    },
+    "glow": {
+        "type": "origins:self_glow",
+        "entity_condition": {
+            "type": "origins:resource",
+            "resource": "*:*_resource",
+            "comparison": ">=",
+            "compare_to": 90
+        },
+        "use_teams": false,
+        "red": 1.0,
+        "green": 0.4,
+        "blue": 0
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "name": "Sunborn",
+    "description": "Born from the blazing depths of the sun, you arrive on Earth, exploring a world vastly different from your scorching solar home.",
+    "powers": [
+        "sun:active/flare",
+        "sun:active/size",
+        "sun:active/recharge",
+        "sun:passive/heat",
+        "sun:passive/swim",
+        "sun:passive/heavy"
+    ],
+    "icon": {
+        "item": "minecraft:magma_block"
+    },
+    "impact": 3
+}

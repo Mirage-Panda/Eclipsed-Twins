@@ -1,0 +1,91 @@
+{
+    "name": "§6[⏺] §rSolar Flare",
+    "description": "Emit a powerful solar flare when heat is 10% or above, dealing massive damage to nearby enemies.",
+    "badges": [
+        {
+            "type": "origins:keybind",
+            "text": "Primary ability, produce solar flare with %s.",
+            "sprite": "origins:textures/gui/badge/active.png"
+        }
+    ],
+    "type": "origins:active_self",
+    "entity_action": {
+        "type": "origins:if_else",
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "*:passive/heat_resource",
+                    "comparison": ">=",
+                    "compare_to": 10
+                }
+            ]
+        },
+        "if_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:flame ~ ~0.75 ~ 0 0 0 1 100 force"
+                },
+                {
+                    "type": "origins:exhaust",
+                    "amount": 30
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:passive/heat_resource",
+                    "operation": "add",
+                    "change": -10
+                },
+                {
+                    "type": "origins:play_sound",
+                    "sound": "minecraft:item.firecharge.use",
+                    "volume": 0.5,
+                    "pitch": 0.1
+                },
+                {
+                    "type": "origins:area_of_effect",
+                    "radius": 20,
+                    "bientity_action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:and",
+                            "actions": [
+                                {
+                                    "type": "origins:execute_command",
+                                    "command": "summon lightning_bolt ~ ~ ~ {Silent:1b}"
+                                },
+                                {
+                                    "type": "origins:execute_command",
+                                    "command": "particle minecraft:gust_emitter_small ~ ~1 ~ 0 0 0 0 1 force"
+                                },
+                                {
+                                    "type": "origins:set_on_fire",
+                                    "duration": 100
+                                },
+                                {
+                                    "type": "origins:damage",
+                                    "amount": 50,
+                                    "damage_type": "minecraft:in_fire"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "else_action": {
+            "type": "origins:execute_command",
+            "command": "particle minecraft:angry_villager ~ ~0.75 ~ 1 1 1 0 5 force"
+        }
+    },
+    "key": "key.origins.primary_active",
+    "cooldown": 50,
+    "hud_render": {
+        "should_render": true,
+        "sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
+        "bar_index": 5
+    }
+}

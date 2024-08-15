@@ -1,0 +1,52 @@
+{
+    "name": "§6[⏺] §rRecharge",
+    "description": "Use the heat stored in your body to recharge hunger and health.",
+    "badges": [
+        {
+            "type": "origins:keybind",
+            "text": "Ternary ability, recharge with %s.",
+            "sprite": "origins:textures/gui/badge/active.png"
+        }
+    ],
+    "type": "origins:active_self",
+    "entity_action": {
+        "type": "origins:if_else",
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "*:passive/heat_resource",
+                    "comparison": ">=",
+                    "compare_to": 10
+                }
+            ]
+        },
+        "if_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:damage_indicator ~ ~ ~ 0.5 0.5 0.5 0.5 20"
+                },
+                {
+                    "type": "origins:feed",
+                    "food": 5,
+                    "saturation": 5
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:passive/heat_resource",
+                    "operation": "add",
+                    "change": -10
+                }
+            ]
+        },
+        "else_action": {
+            "type": "origins:execute_command",
+            "command": "particle minecraft:angry_villager ~ ~0.75 ~ 1 1 1 0 5 force"
+        }
+    },
+    "key": "key.loadToolbarActivator",
+    "continuous": true
+}

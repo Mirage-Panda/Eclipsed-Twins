@@ -1,0 +1,109 @@
+{
+    "name": "§c[-] §rFrail",
+    "description": "Accustomed to low lunar gravity, you can only wear armour up to iron level and suffer double knockback.",
+    "type": "origins:multiple",
+    "armor": {
+        "type": "origins:restrict_armor",
+        "head": {
+            "type": "origins:or",
+            "conditions": [
+                {
+                    "type": "origins:ingredient",
+                    "ingredient": {
+                        "item": "minecraft:leather_helmet"
+                    }
+                },
+                {
+                    "type": "origins:ingredient",
+                    "ingredient": {
+                        "item": "minecraft:chainmail_helmet"
+                    }
+                },
+                {
+                    "type": "origins:ingredient",
+                    "ingredient": {
+                        "item": "minecraft:iron_helmet"
+                    }
+                }
+            ]
+        },
+        "chest": {
+            "type": "origins:or",
+            "conditions": [
+                {
+                    "type": "origins:ingredient",
+                    "ingredient": {
+                        "item": "minecraft:leather_chestplate"
+                    }
+                },
+                {
+                    "type": "origins:ingredient",
+                    "ingredient": {
+                        "item": "minecraft:chainmail_chestplate"
+                    }
+                },
+                {
+                    "type": "origins:ingredient",
+                    "ingredient": {
+                        "item": "minecraft:iron_chestplate"
+                    }
+                }
+            ]
+        },
+        "legs": {
+            "type": "origins:or",
+            "conditions": [
+                {
+                    "type": "origins:ingredient",
+                    "ingredient": {
+                        "item": "minecraft:leather_leggings"
+                    }
+                },
+                {
+                    "type": "origins:ingredient",
+                    "ingredient": {
+                        "item": "minecraft:chainmail_leggings"
+                    }
+                },
+                {
+                    "type": "origins:ingredient",
+                    "ingredient": {
+                        "item": "minecraft:iron_leggings"
+                    }
+                }
+            ]
+        },
+        "feet": {
+            "type": "origins:or",
+            "conditions": [
+                {
+                    "type": "origins:ingredient",
+                    "ingredient": {
+                        "item": "minecraft:leather_boots"
+                    }
+                },
+                {
+                    "type": "origins:ingredient",
+                    "ingredient": {
+                        "item": "minecraft:chainmail_boots"
+                    }
+                },
+                {
+                    "type": "origins:ingredient",
+                    "ingredient": {
+                        "item": "minecraft:iron_boots"
+                    }
+                }
+            ]
+        }
+    },
+    "knockback": {
+        "type": "origins:self_action_when_hit",
+        "entity_action": {
+            "type": "origins:add_velocity",
+            "z": 0.25,
+            "client": true,
+            "server": true
+        }
+    }
+}

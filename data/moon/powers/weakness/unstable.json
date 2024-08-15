@@ -1,0 +1,62 @@
+{
+    "name": "§c[-] §rUnstable",
+    "description": "Your body, formed from lunar energy, causing you to only have 8 hearts, and only regenerate when your energy is full.",
+    "type": "origins:multiple",
+    "translucent": {
+        "type": "origins:model_color",
+        "red": 1,
+        "green": 1,
+        "blue": 1,
+        "alpha": 0.8
+    },
+    "health": {
+        "type": "origins:attribute",
+        "modifier": {
+            "attribute": "minecraft:generic.max_health",
+            "operation": "addition",
+            "value": -6,
+            "name": "Fragile health reduction"
+        },
+        "update_health": true
+    },
+    "shader": {
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:charge_energy",
+            "comparison": "<=",
+            "compare_to": 15
+        },
+        "type": "origins:shader",
+        "shader": "minecraft:shaders/post/pencil.json",
+        "toggleable": false
+    },
+    "shake": {
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:charge_energy",
+            "comparison": "<=",
+            "compare_to": 25
+        },
+        "type": "origins:shaking"
+    },
+    "saturation": {
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:charge_energy",
+            "comparison": "==",
+            "compare_to": 300
+        },
+        "type": "origins:stacking_status_effect",
+        "min_stacks": -1,
+        "max_stacks": 1,
+        "duration_per_stack": 15,
+        "tick_rate": 10,
+        "effect": {
+            "effect": "minecraft:saturation",
+            "duration": 100,
+            "amplifier": 0,
+            "show_particles": false,
+            "show_icon": false
+        }
+    }
+}

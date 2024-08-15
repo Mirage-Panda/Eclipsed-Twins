@@ -1,0 +1,88 @@
+{
+    "name": "§6[⏺] §rRelocation",
+    "description": "With the moon's help, you instantly relocate yourself to the block you are looking at.",
+    "badges": [
+        {
+            "type": "origins:keybind",
+            "text": "Primary ability, teleport with %s.",
+            "sprite": "origins:textures/gui/badge/active.png"
+        }
+    ],
+    "type": "origins:active_self",
+    "entity_action": {
+        "type": "origins:raycast",
+        "distance": 100,
+        "block": true,
+        "entity": false,
+        "shape_type": "collider",
+        "fluid_handling": "none",
+        "bientity_condition": {
+            "type": "origins:actor_condition",
+            "condition": {
+                "type": "origins:and",
+                "conditions": [
+                    {
+                        "type": "origins:resource",
+                        "resource": "*:charge_energy",
+                        "comparison": ">=",
+                        "compare_to": 10
+                    },
+                    {
+                        "inverted": true,
+                        "type": "origins:power_active",
+                        "power": "*:mist_toggle"
+                    }
+                ]
+            }
+        },
+        "before_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:spawn_particles",
+                    "particle": "minecraft:end_rod",
+                    "count": 100,
+                    "speed": 0.3,
+                    "force": true,
+                    "offset_y": 0.5
+                },
+                {
+                    "type": "origins:spawn_particles",
+                    "particle": "minecraft:end_rod",
+                    "count": 100,
+                    "speed": 0.05,
+                    "force": true,
+                    "offset_y": 0.5
+                }
+            ]
+        },
+        "hit_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:play_sound",
+                    "sound": "minecraft:entity.illusioner.mirror_move",
+                    "volume": 1,
+                    "pitch": 1
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:charge_energy",
+                    "change": -10,
+                    "operation": "add"
+                }
+            ]
+        },
+        "command_at_hit": "function moon:teleport",
+        "command_along_ray_only_on_hit": true
+    },
+    "cooldown": 15,
+    "hud_render": {
+        "should_render": true,
+        "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_03.png",
+        "bar_index": 7
+    },
+    "key": {
+        "key": "key.origins.primary_active"
+    }
+}

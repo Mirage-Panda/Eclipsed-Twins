@@ -1,0 +1,142 @@
+{
+    "name": "§3[%] §rLunar Charge",
+    "description": "You have an energy bar that can be refilled when at night, or when killing mobs.",
+    "loading_priority": 1,
+    "type": "origins:multiple",
+    "energy": {
+        "type": "origins:resource",
+        "min": 1,
+        "max": 300,
+        "start_value": 300,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_02.png",
+            "bar_index": 23
+        }
+    },
+    "night": {
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:and",
+                    "conditions": [
+                        {
+                            "inverted": true,
+                            "type": "origins:exposed_to_sun"
+                        },
+                        {
+                            "type": "origins:exposed_to_sky"
+                        }
+                    ]
+                },
+                {
+                    "inverted": true,
+                    "type": "origins:power_active",
+                    "power": "*:mist_toggle"
+                }
+            ]
+        },
+        "type": "origins:action_over_time",
+        "interval": 20,
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:charge_energy",
+                    "change": 3,
+                    "operation": "add"
+                }
+            ]
+        }
+    },
+    "sun": {
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:exposed_to_sun"
+                },
+                {
+                    "inverted": true,
+                    "type": "origins:invisible"
+                },
+                {
+                    "inverted": true,
+                    "type": "origins:power_active",
+                    "power": "breacher:phantomize_toggle"
+                },
+                {
+                    "type": "origins:equipped_item",
+                    "equipment_slot": "head",
+                    "item_condition": {
+                        "inverted": true,
+                        "type": "origins:armor_value",
+                        "comparison": ">=",
+                        "compare_to": 1
+                    }
+                }
+            ]
+        },
+        "type": "origins:action_over_time",
+        "interval": 10,
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:charge_energy",
+                    "change": -1,
+                    "operation": "add"
+                }
+            ]
+        }
+    },
+    "hydrophobia": {
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:enchantment",
+                    "enchantment": "origins:water_protection",
+                    "calculation": "sum",
+                    "comparison": "<",
+                    "compare_to": 4
+                },
+                {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:fluid_height",
+                            "fluid": "minecraft:water",
+                            "comparison": ">",
+                            "compare_to": 0
+                        },
+                        {
+                            "type": "origins:in_rain"
+                        }
+                    ]
+                }
+            ]
+        },
+        "type": "origins:action_over_time",
+        "interval": 5,
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "*:charge_energy",
+            "change": -5,
+            "operation": "add"
+        }
+    },
+    "kill": {
+        "type": "origins:self_action_on_kill",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "*:charge_energy",
+            "change": 75,
+            "operation": "add"
+        },
+        "cooldown": 0
+    }
+}

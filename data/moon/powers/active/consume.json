@@ -1,0 +1,68 @@
+{
+    "name": "§6[⏺] §rYummy End Stone",
+    "description": "You can consume end stone to increase your lunar charge.",
+    "badges": [
+        {
+            "type": "origins:keybind",
+            "text": "Consume end stone by pressing %s",
+            "sprite": "origins:textures/gui/badge/active.png"
+        }
+    ],
+    "type": "origins:active_self",
+    "entity_action": {
+        "type":"origins:and",
+        "actions": [
+            {
+                "type": "origins:equipped_item_action",
+                "equipment_slot": "mainhand",
+                "action": {
+                    "type": "origins:consume",
+                    "amount": 1
+                }
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "execute at @s run playsound minecraft:ui.stonecutter.take_result master @s ~ ~ ~ 1 1"
+            },
+            {
+                "type": "origins:change_resource",
+                "resource": "*:charge_energy",
+                "operation": "add",
+                "change": 20
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "particle minecraft:firework ~ ~0.75 ~ 0 0 0 0.2 15 force"
+            }
+        ]
+    },
+    "cooldown": 10,
+    "hud_render": {
+        "should_render": false
+    },
+    "key": {
+        "key":"key.attack",
+        "continuous": true
+    },
+    "condition": {
+        "type": "origins:and",
+        "conditions": [
+            {
+                "type": "origins:equipped_item",
+                "equipment_slot": "mainhand",
+                "item_condition": {
+                    "type": "origins:ingredient",
+                    "ingredient": {
+                        "item":"minecraft:end_stone"
+                }
+            }
+        },
+        {
+            "type": "origins:resource",
+            "resource": "*:charge_energy",
+            "comparison": "<",
+            "compare_to": 300
+        }
+        ]
+    }
+}

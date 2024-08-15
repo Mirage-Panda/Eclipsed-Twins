@@ -1,0 +1,91 @@
+{
+    "name": "§a[+] §rIcy Presence",
+    "description": "When your energy exceeds half capacity, you generate a cold aura, freezing enemies upon attack. You also freeze all water upon contact.",
+    "badges": [
+        {
+            "type": "origins:tooltip",
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "-When an enemy is first hit, their movement stops completely\n-When they are frozen and hit again, you deal 2x damage (they shatter)"
+        }
+    ],
+    "type": "origins:multiple",
+    "entity_freeze": {
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:charge_energy",
+            "comparison": ">=",
+            "compare_to": 150
+        },
+        "type": "origins:target_action_on_hit",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:grant_power",
+                    "power": "*:entities/freeze",
+                    "source": "apoli:command"
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 75,
+                    "action": {
+                       "type": "origins:revoke_power",
+                       "power": "*:entities/freeze",
+                       "source": "apoli:command"
+                    }
+                }
+            ]
+        },
+        "cooldown": 75,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
+            "bar_index": 9
+        }
+    },
+    "frost_walker": {
+        "type": "origins:action_over_time",
+        "interval": 5,
+        "entity_action": {
+          "type": "origins:if_else",
+          "condition": {
+            "type": "origins:or",
+            "inverted":true,
+            "conditions": [
+                {
+                    "type": "origins:sneaking"
+                    
+                },
+                {
+                    "type": "origins:fall_distance",
+                    "comparison": ">=",
+                    "compare_to": 4
+                },
+                {
+                    "type": "origins:in_block",
+                    "block_condition": {
+                        "type": "origins:block",
+                        "block": "minecraft:water"
+                    }
+                },
+                {
+                    "type": "origins:fall_flying"
+                }
+            ]
+        },
+        "if_action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type":"origins:execute_command",
+                        "command": "fill ~2 ~-1 ~1 ~-2 ~-1 ~-1 minecraft:frosted_ice replace water[level=0]"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "fill ~1 ~-1 ~2 ~-1 ~-1 ~-2 minecraft:frosted_ice replace water[level=0]"
+                    }
+                ]
+            }
+        }
+    }
+}

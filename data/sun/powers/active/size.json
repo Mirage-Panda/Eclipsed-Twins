@@ -1,0 +1,147 @@
+{
+	"name": "§6[⏺] §rTitan",
+	"description": "Being manifested from within the sun, you are a titan. Over the years, you have learned the power to shrink and grow to your will.",
+	"badges": [
+		{
+			"type": "origins:keybind",
+			"text": "Secondary ability, change size with %s.",
+			"sprite": "origins:textures/gui/badge/toggle.png"
+		},
+		{
+			"type": "origins:sprite",
+			"text": "Being in normal mode, you are 2 blocks tall.\nBeing in titan mode makes you 5 blocks tall",
+			"sprite": "origins:textures/gui/badge/info.png"
+		}
+	],
+	"type": "origins:multiple",
+	"default": {
+		"type": "origins:action_on_callback",
+		"entity_action_chosen": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "scale set pehkui:base 1.3"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "scale persist true"
+				}
+			]
+		},
+		"entity_action_lost": {
+			"type": "origins:execute_command",
+			"command": "scale set pehkui:base 1"
+		}
+	},
+	"resource": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 1,
+		"start_value": 0,
+		"hud_render": {
+			"should_render": false
+		},
+		"min_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:play_sound",
+					"sound": "minecraft:block.beacon.deactivate",
+					"volume": 10,
+					"pitch": 1
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "scale set pehkui:base 1.3"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "scale persist set true"
+				}
+			]
+		},
+		"max_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:play_sound",
+					"sound": "minecraft:block.beacon.activate",
+					"volume": 10,
+					"pitch": 1
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "scale set pehkui:base 3.5"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "scale persist set true"
+				}
+			]
+		}
+	},
+	"toggle": {
+		"type": "origins:active_self",
+		"entity_action": {
+			"type": "origins:if_else",
+			"condition": {
+				"type": "origins:resource",
+				"resource": "*:*_resource",
+				"comparison": "==",
+				"compare_to": 1
+			},
+			"if_action": {
+				"type": "origins:change_resource",
+				"resource": "*:*_resource",
+				"change": -1,
+				"operation": "add"
+			},
+			"else_action": {
+				"type": "origins:change_resource",
+				"resource": "*:*_resource",
+				"change": 1,
+				"operation": "add"
+			}
+		},
+		"cooldown": 10,
+		"hud_render": {
+			"should_render": false
+		},
+		"key": {
+			"key": "key.origins.secondary_active"
+		}
+	},
+	"strength": {
+		"type": "origins:modify_damage_dealt",
+		"bientity_condition": {
+			"type": "origins:actor_condition",
+			"condition": {
+				"type": "origins:resource",
+				"resource": "*:*_resource",
+				"comparison": "==",
+				"compare_to": 1
+			}
+		},
+		"modifier": {
+			"value": 9,
+			"operation": "multiply_total"
+		}
+	},
+	"defence": {
+		"type": "origins:modify_damage_taken",
+		"bientity_condition": {
+			"type": "origins:target_condition",
+			"condition": {
+				"type": "origins:resource",
+				"resource": "*:*_resource",
+				"comparison": "==",
+				"compare_to": 1
+			}
+		},
+		"modifier": {
+			"value": -0.9,
+			"operation": "multiply_total"
+		}
+	}
+}
