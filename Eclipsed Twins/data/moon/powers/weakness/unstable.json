@@ -12,10 +12,10 @@
     "health": {
         "type": "origins:attribute",
         "modifier": {
+            "id": "moon:max_health",
             "attribute": "minecraft:generic.max_health",
-            "operation": "addition",
-            "value": -6,
-            "name": "Fragile health reduction"
+            "operation": "ADD_Value",
+            "amount": -6
         },
         "update_health": true
     },
@@ -52,7 +52,7 @@
         "duration_per_stack": 15,
         "tick_rate": 10,
         "effect": {
-            "effect": "minecraft:saturation",
+            "id": "minecraft:saturation",
             "duration": 100,
             "amplifier": 0,
             "show_particles": false,

@@ -31,7 +31,7 @@
                 },
                 {
                     "type": "origins:feed",
-                    "food": 5,
+                    "nutrition": 5,
                     "saturation": 5
                 },
                 {

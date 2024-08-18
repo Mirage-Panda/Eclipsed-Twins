@@ -10,15 +10,15 @@
     ],
     "type": "origins:multiple",
     "mist_all": {
-        "condition": {
-            "type": "origins:power_active",
-            "power": "*:active/mist_toggle"
-        },
         "type": "origins:invulnerability",
         "damage_condition": {
             "inverted": true,
             "type": "origins:name",
             "name": "minecraft:magic"
+        },
+        "condition": {
+            "type": "origins:power_active",
+            "power": "*:active/mist_toggle"
         }
     },
     "suffocation": {
@@ -44,15 +44,15 @@
     },
     "hungerimmune": {
         "type": "origins:effect_immunity",
-        "effect": [
+        "effects": [
             "minecraft:hunger"
         ]
     },
-    "explode": {
+    "others": {
         "type": "origins:modify_damage_taken",
         "modifier": {
-            "value": 1,
-            "operation": "multiply_base"
+            "amount": 1,
+            "operation": "multiply_base_additive"
         }
     }
 }

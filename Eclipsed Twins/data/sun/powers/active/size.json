@@ -124,8 +124,8 @@
 			}
 		},
 		"modifier": {
-			"value": 9,
-			"operation": "multiply_total"
+			"amount": 9,
+			"operation": "multiply_total_additive"
 		}
 	},
 	"defence": {
@@ -140,8 +140,8 @@
 			}
 		},
 		"modifier": {
-			"value": -0.9,
-			"operation": "multiply_total"
+			"amount": -0.9,
+			"operation": "multiply_total_additive"
 		}
 	}
 }

@@ -27,7 +27,6 @@
             {
                 "type": "origins:change_resource",
                 "resource": "*:charge_energy",
-                "operation": "add",
                 "change": 20
             },
             {

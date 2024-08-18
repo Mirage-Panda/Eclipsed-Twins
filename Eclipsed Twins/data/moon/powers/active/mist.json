@@ -15,17 +15,12 @@
     ],
     "type": "origins:multiple",
     "toggle": {
-        "condition": {
-            "inverted": true,
-            "type": "origins:power_active",
-            "power": "*:fly_toggle"
-        },
         "type": "origins:toggle",
         "active_by_default": false,
         "key": {
             "key": "key.origins.secondary_active"
         },
-        "retain_state": true
+        "retain_state": false
     },
     "invisibility": {
         "condition": {
@@ -109,7 +104,7 @@
         "entity_action": {
             "type": "origins:apply_effect",
             "effect": {
-                "effect": "minecraft:levitation",
+                "id": "minecraft:levitation",
                 "duration": 2,
                 "amplifier": 10,
                 "show_particles": false,
@@ -253,8 +248,8 @@
         },
         "type": "origins:modify_damage_dealt",
         "modifier": {
-            "operation": "multiply_total",
-            "value": -1
+            "operation": "multiply_total_additive",
+            "amount": -1
         }
     },
     "elytra": {

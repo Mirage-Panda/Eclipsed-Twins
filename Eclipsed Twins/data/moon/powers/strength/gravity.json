@@ -24,15 +24,12 @@
             "type": "origins:and",
             "conditions": [
                 {
-                   "type": "origins:or",
-                   "conditions": [
-                    {"type": "origins:sprinting"}
-                   ]
+                    "type": "origins:sprinting"
                 },
                 {
-                    "inverted": true,
                     "type": "origins:power_active",
-                    "power": "*:active/mist_toggle"
+                    "power": "*:active/mist_toggle",
+                    "inverted": true
                 }
             ]
         },
@@ -45,11 +42,6 @@
             "conditions": [
                 {
                     "type": "origins:fall_flying"
-                },
-                {
-                    "inverted": true,
-                    "type": "origins:power_active",
-                    "power": "*:active/mist_toggle"
                 }
             ]
         },
@@ -64,9 +56,7 @@
                 {
                     "type": "origins:add_velocity",
                     "z": 1,
-                    "space": "local",
-                    "client": true,
-                    "server": true
+                    "space": "local"
                 }
             ]
         },

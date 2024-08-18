@@ -10,7 +10,7 @@
         "sun:passive/heavy"
     ],
     "icon": {
-        "item": "minecraft:magma_block"
+        "id": "minecraft:magma_block"
     },
     "impact": 3
 }

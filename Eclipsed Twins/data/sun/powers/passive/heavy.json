@@ -5,8 +5,8 @@
   "jump_small": {
     "type": "origins:modify_jump",
     "modifier": {
-      "operation": "multiply_total",
-      "value": -0.1
+      "operation": "multiply_total_additive",
+      "amount": -0.1
     },
     "condition": {
       "type": "origins:resource",
@@ -18,8 +18,8 @@
   "speed_small": {
     "type": "origins:modify_velocity",
     "modifier": {
-      "value": -0.1,
-      "operation": "multiply_total"
+      "amount": -0.1,
+      "operation": "multiply_total_additive"
     },
     "axes": [
       "x",
@@ -35,8 +35,8 @@
   "jump_big": {
     "type": "origins:modify_jump",
     "modifier": {
-      "operation": "multiply_total",
-      "value": 0.5
+      "operation": "multiply_total_additive",
+      "amount": 0.5
     },
     "condition": {
       "type": "origins:resource",
@@ -48,8 +48,8 @@
   "speed_big1": {
     "type": "origins:modify_velocity",
     "modifier": {
-      "value": -0.5,
-      "operation": "multiply_total"
+      "amount": -0.5,
+      "operation": "multiply_total_additive"
     },
     "axes": [
       "x",
@@ -74,8 +74,8 @@
   "speed_big2": {
     "type": "origins:modify_velocity",
     "modifier": {
-      "value": -0.2,
-      "operation": "multiply_total"
+      "amount": -0.2,
+      "operation": "multiply_total_additive"
     },
     "axes": [
       "x",

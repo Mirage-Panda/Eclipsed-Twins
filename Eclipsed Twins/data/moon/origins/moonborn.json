@@ -17,7 +17,7 @@
         "moon:weakness/frail"
     ],
     "icon": {
-        "item": "minecraft:end_stone"
+        "id": "minecraft:end_stone"
     },
     "impact": 3
 }

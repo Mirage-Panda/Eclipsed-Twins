@@ -11,7 +11,7 @@
         "condition": {
             "inverted": true,
             "type": "origins:power_active",
-            "power": "*:mist_toggle"
+            "power": "*:active/mist_toggle"
         },
         "type": "origins:action_over_time",
         "interval": 10,
@@ -27,27 +27,6 @@
         "type": "origins:prevent_item_use",
         "item_condition": {
             "type": "origins:food"
-        }
-    },
-    "endstone": {
-        "type": "origins:action_over_time",
-        "interval": 20,
-        "entity_action": {
-            "type": "origins:modify_inventory",
-            "inventory_type": "inventory",
-            "item_action": {
-                "type": "origins:merge_nbt",
-                "nbt": "{display:{Name:'[{\"text\":\"Cheese…?\",\"italic\":false}]'}}"
-            },
-            "item_condition": {
-                "type": "origins:ingredient",
-                "ingredient": {
-                    "item": "minecraft:end_stone"
-                }
-            },
-            "slots": [],
-            "process_mode": "items",
-            "limit": 0
         }
     }
 }
