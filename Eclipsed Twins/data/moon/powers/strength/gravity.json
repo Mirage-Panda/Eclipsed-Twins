@@ -16,7 +16,7 @@
             "power": "*:active/mist_toggle"
         },
         "type": "origins:modify_falling",
-        "velocity": 0.06,
+        "velocity": 0.04,
         "take_fall_damage": false
     },
     "elytra": {
